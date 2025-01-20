@@ -8,11 +8,11 @@ export function renderGallery(images) {
       ({
         webformatURL,
         largeImageURL,
-        tags = 'No description',
-        likes = 0,
-        views = 0,
-        comments = 0,
-        downloads = 0,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
       }) => `
     <a href="${largeImageURL}" class="gallery__item">
       <div class="photo-card">
@@ -35,33 +35,23 @@ export function clearGallery() {
   gallery.innerHTML = '';
 }
 
-function toggleVisibility(element, action) {
-  if (action === 'show') {
-    element.classList.remove('hidden');
-  } else if (action === 'hide') {
-    element.classList.add('hidden');
-  }
-}
-
 export function showLoadingIndicator() {
-  toggleVisibility(loader, 'show');
+  loader.classList.remove('hidden');
 }
 
 export function hideLoadingIndicator() {
-  toggleVisibility(loader, 'hide');
+  loader.classList.add('hidden');
 }
 
 export function showLoadMoreButton() {
-  toggleVisibility(loadMoreBtn, 'show');
+  loadMoreBtn.classList.remove('hidden');
 }
 
 export function hideLoadMoreButton() {
-  toggleVisibility(loadMoreBtn, 'hide');
+  loadMoreBtn.classList.add('hidden');
 }
 
 export function scrollPage() {
-  if (!gallery.firstElementChild) return;
-
   const { height: cardHeight } =
     gallery.firstElementChild.getBoundingClientRect();
   window.scrollBy({
