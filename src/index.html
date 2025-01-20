@@ -2,21 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <meta name="description" content="Image Search App using Pixabay API" />
+    <meta name="author" content="Risina Liliia" />
+    <title>Image Search App</title>
+    <link rel="stylesheet" href="path/to/modern-normalize.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.11.0/simple-lightbox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-
+    <header class="header">
+      <form id="search-form" class="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          placeholder="Search images..."
+          autocomplete="off"
+          aria-label="Search images"
+        />
+        <button type="submit" aria-label="Submit search">Search</button>
+      </form>
+    </header>
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+      <div class="loader hidden">
+        <div class="animate__animated animate__spinIn">
+          <div class="css-loader"></div>
+        </div>
+      </div>
 
-    <load src="./partials/footer.html" />
+      <div class="section-gallery">
+        <ul class="gallery"></ul>
+      </div>
+
+      <div class="load-more-container">
+        <button class="load-more hidden">Load more</button>
+      </div>
+    </main>
 
     <script type="module" src="./main.js"></script>
   </body>

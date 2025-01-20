@@ -1,113 +1,117 @@
-# Vanilla App Template
+# goit-js-hw-12
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+# Image Search App
 
-## Створення репозиторію за шаблоном
+This project is a simple image search application built using the Pixabay API.
+It allows users to search for images by keyword and view them in a gallery with
+additional details such as likes, views, comments, and downloads.
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+## Features
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+- **Image Search**: Users can search for images by entering a keyword in the
+  search form.
+- **Loading Indicator**: A CSS-based loader appears while fetching images from
+  the API.
+- **Error and Success Notifications**: The app uses `iziToast` for user-friendly
+  notifications.
+- **Image Gallery**: Displays search results in a grid layout.
+- **Lightbox Modal**: Users can click on images to view them in a larger format
+  using `SimpleLightbox`.
+- **Pagination Ready**: Supports fetching results for multiple pages.
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+## Technologies Used
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+- HTML5, CSS3
+- JavaScript (ES6+)
+- Axios: For handling API requests
+- [Pixabay API](https://pixabay.com/api/docs/)
+- [iziToast](https://izitoast.marcelodolce.com/)
+- [SimpleLightbox](https://simplelightbox.com/)
+- [Animate.css](https://animate.style/) (for animations)
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+## Installation
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+Follow these steps to run the project locally:
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+1. Clone the repository:
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+   ```bash
+   git clone https://github.com/your-username/image-search-app.git
+   cd image-search-app
+   ```
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+2. Install dependencies:
 
-## Підготовка до роботи
+   ```bash
+   npm install
+   ```
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+3. Start the development server:
 
-## Файли і папки
+   ```bash
+   npm start
+   ```
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+4. Open `http://localhost:3000` in your browser to view the app.
 
-## Деплой
+## Usage
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+1. Enter a search term in the input field.
+2. Click the "Search" button.
+3. View the image results in the gallery.
+4. Click on an image to open it in a lightbox modal.
 
-```json
-"build": "vite build --base=/<REPO>/",
+## File Structure
+
+```plaintext
+image-search-app/
+├── css/
+│   ├── styles.css          # Custom styles
+├── js/
+│   ├── pixabay-api.js      # API fetching logic
+│   ├── render-functions.js # Functions for rendering the gallery and loader
+├── index.html              # Main HTML file
+├── main.js                 # Entry point for the app
+├── package.json            # Project metadata and dependencies
+├── README.md               # Project documentation
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+## Dependencies
 
-![GitHub Pages settings](./assets/repo-settings.png)
+The project uses the following npm packages:
 
-### Статус деплою
+- **Animate.css**: Provides pre-built animations for elements.
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+  ```bash
+  npm install animate.css
+  ```
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+  Example usage:
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+  ```html
+  <div class="animate__animated animate__bounce">Hello!</div>
+  ```
 
-![Deployment status](./assets/deploy-status.png)
+- **iziToast**: For elegant notifications.
 
-### Жива сторінка
+  ```bash
+  npm install izitoast
+  ```
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
+- **SimpleLightbox**: For a lightbox modal experience.
+  ```bash
+  npm install simplelightbox
+  ```
 
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
+## API Configuration
 
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
+To use the Pixabay API, ensure you have an API key. Replace `YOUR_API_KEY` in
+`pixabay-api.js` with your key:
 
-## Як це працює
+```javascript
+const API_KEY = 'YOUR_API_KEY';
+```
 
-![How it works](./assets/how-it-works.png)
+## Contributions
 
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+## License
