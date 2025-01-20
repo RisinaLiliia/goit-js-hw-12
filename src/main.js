@@ -17,22 +17,38 @@ const form = document.querySelector('#search-form');
 const loadMoreBtn = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
 
+const perPage = 15;
 let currentPage = 1;
 let query = '';
 let totalHits = 0;
-const perPage = 15;
 
-const lightbox = new SimpleLightbox('.gallery a');
+const showError = message => {
+  iziToast.error({
+    title: 'Error',
+    message,
+  });
+};
+
+const showWarning = message => {
+  iziToast.warning({
+    title: 'Warning',
+    message,
+  });
+};
+
+const showSuccess = message => {
+  iziToast.success({
+    title: 'Success',
+    message,
+  });
+};
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
   query = e.target.elements.searchQuery.value.trim();
 
   if (!query) {
-    iziToast.warning({
-      title: 'Warning',
-      message: 'Please enter a search term!',
-    });
+    showWarning('Please enter a search term!');
     return;
   }
 
@@ -50,28 +66,20 @@ form.addEventListener('submit', async e => {
     totalHits = total;
 
     if (!hits.length) {
-      iziToast.error({
-        title: 'Error',
-        message: 'No images found. Try again!',
-      });
+      showError('No images found. Try again!');
       return;
     }
 
     renderGallery(hits);
+    const lightbox = new SimpleLightbox('.gallery a');
     lightbox.refresh();
-    iziToast.success({
-      title: 'Success',
-      message: `Found ${totalHits} images!`,
-    });
+    showSuccess(`Found ${totalHits} images!`);
 
     if (hits.length < totalHits) {
       loadMoreBtn.classList.add('visible');
     }
   } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again later.',
-    });
+    showError('Something went wrong. Please try again later.');
   } finally {
     hideLoadingIndicator();
   }
@@ -85,6 +93,7 @@ loadMoreBtn.addEventListener('click', async () => {
     const { hits } = await fetchImages(query, currentPage, perPage);
 
     renderGallery(hits);
+    const lightbox = new SimpleLightbox('.gallery a');
     lightbox.refresh();
     scrollPage();
 
@@ -96,10 +105,7 @@ loadMoreBtn.addEventListener('click', async () => {
       });
     }
   } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again later.',
-    });
+    showError('Something went wrong. Please try again later.');
   } finally {
     hideLoadingIndicator();
   }
