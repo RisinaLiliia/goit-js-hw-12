@@ -6,7 +6,7 @@
     <meta name="description" content="Image Search App using Pixabay API" />
     <meta name="author" content="Risina Liliia" />
     <title>Image Search App</title>
-      <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
       integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
@@ -31,11 +31,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"
+    />
 
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-tnUJPedx.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-CWKLx11g.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-CPesZTqf.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-DXSicJGL.css">
   </head>
   <body>
     <header class="header">
@@ -51,18 +55,17 @@
       </form>
     </header>
     <main>
-      <div class="loader hidden">
-        <div class="animate__animated animate__spinIn">
-          <div class="css-loader"></div>
-        </div>
-      </div>
-
       <div class="section-gallery">
         <ul class="gallery"></ul>
       </div>
 
       <div class="load-more-container">
-        <button class="load-more hidden">Load more</button>
+        <button class="load-more hidden">Load More</button>
+        <div class="loader hidden">
+          <div class="animate__animated animate__spinIn">
+            <div class="css-loader"></div>
+          </div>
+        </div>
       </div>
     </main>
 
