@@ -6,7 +6,7 @@
     <meta name="description" content="Image Search App using Pixabay API" />
     <meta name="author" content="Risina Liliia" />
     <title>Image Search App</title>
-      <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
       integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
@@ -31,6 +31,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"
+    />
 
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
@@ -48,18 +52,17 @@
       </form>
     </header>
     <main>
-      <div class="loader hidden">
-        <div class="animate__animated animate__spinIn">
-          <div class="css-loader"></div>
-        </div>
-      </div>
-
       <div class="section-gallery">
         <ul class="gallery"></ul>
       </div>
 
       <div class="load-more-container">
-        <button class="load-more hidden">Load more</button>
+        <button class="load-more hidden">Load More</button>
+        <div class="loader hidden">
+          <div class="animate__animated animate__spinIn">
+            <div class="css-loader"></div>
+          </div>
+        </div>
       </div>
     </main>
 

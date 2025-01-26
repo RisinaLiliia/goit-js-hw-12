@@ -4,8 +4,6 @@ import {
   clearGallery,
   showLoadingIndicator,
   hideLoadingIndicator,
-  showLoadMoreButton,
-  hideLoadMoreButton,
   scrollPage,
 } from './js/render-functions.js';
 import SimpleLightbox from 'simplelightbox';
@@ -15,7 +13,6 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('#search-form');
 const loadMoreBtn = document.querySelector('.load-more');
-const gallery = document.querySelector('.gallery');
 
 let currentPage = 1;
 let query = '';
@@ -37,7 +34,6 @@ form.addEventListener('submit', async e => {
   }
 
   clearGallery();
-  hideLoadMoreButton();
   currentPage = 1;
 
   try {
@@ -57,16 +53,12 @@ form.addEventListener('submit', async e => {
       return;
     }
 
-    renderGallery(hits);
+    renderGallery(hits, totalHits, currentPage, perPage);
     lightbox.refresh();
     iziToast.success({
       title: 'Success',
       message: `Found ${totalHits} images!`,
     });
-
-    if (hits.length < totalHits) {
-      loadMoreBtn.classList.add('visible');
-    }
   } catch (error) {
     iziToast.error({
       title: 'Error',
@@ -84,12 +76,11 @@ loadMoreBtn.addEventListener('click', async () => {
     showLoadingIndicator();
     const { hits } = await fetchImages(query, currentPage, perPage);
 
-    renderGallery(hits);
+    renderGallery(hits, totalHits, currentPage, perPage);
     lightbox.refresh();
     scrollPage();
 
     if (currentPage * perPage >= totalHits) {
-      loadMoreBtn.classList.remove('visible');
       iziToast.info({
         title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
